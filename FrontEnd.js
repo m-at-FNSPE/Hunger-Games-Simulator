@@ -1,8 +1,13 @@
 
 class Reaping{
+    static listRandomFirstNames = ["Harry","Ross","Bruce","Cook","Carolyn","Morgan","Albert","Walker","Randy","Reed","Larry","Barnes","Lois","Wilson","Jesse","Campbell","Ernest","Rogers","Theresa","Patterson","Henry","Simmons","Michelle","Perry","Frank","Butler","Shirley"]
+    static listRandomLastNames = ["Ruth","Jackson","Debra","Allen","Gerald","Harris","Raymond","Carter","Jacqueline","Torres","Joseph","Nelson","Carlos","Sanchez","Ralph","Clark","Jean","Alexander","Stephen","Roberts","Eric","Long","Amanda","Scott","Teresa","Diaz","Wanda","Thomas"]
+    static listOfRandomPronouns = ["he/him", "she/her", "they/them"]
+
     constructor(){
         this.changeNumberOfContestantsToEqualTheSelectedValue()
         document.getElementById("howManyContestants").addEventListener("change", this.changeNumberOfContestantsToEqualTheSelectedValue.bind(this))
+        document.getElementById("generateRandom").addEventListener("click", this.fillWithRandomContestants.bind(this))
     }
 
     pushNewContestantField(){
@@ -59,6 +64,61 @@ class Reaping{
             }
         }
     }
+
+    static generateRandomName(){
+        let firstName = randomArrayElement(this.listRandomFirstNames)
+        let lastName = randomArrayElement(this.listRandomLastNames)
+
+        return firstName + " " + lastName
+    }
+
+    fillWithRandomContestants(){
+        let listOfForms = document.getElementById("selectionOfIndividualContestants").children
+
+        for(let i = 0; i < listOfForms.length; i++){
+            let currentForm = listOfForms[i].firstChild
+            currentForm.children.namedItem("name").value = Reaping.generateRandomName()
+
+            currentForm.children.namedItem("pronouns").value = randomArrayElement(Reaping.listOfRandomPronouns)
+        }
+    }
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************************** HELPER FUNCTIONS ***************************
+function randomArrayElement(array){
+    return array[Math.floor(Math.random() * array.length)]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************* CODE EXECUTION ***************************
 
 let reaping = new Reaping()
