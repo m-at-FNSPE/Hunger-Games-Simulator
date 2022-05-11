@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="Arena.js"></script>
-    <script src="FrontEnd.js"></script>
+    <script defer src="Arena.js"></script>
+    <script defer src="FrontEnd.js"></script>
     <title>Hunger Games Simulator</title>
 </head>
 <body>
@@ -12,19 +12,32 @@
 
 
 
-<H2> Please select your fighters </H2>
+<H2> Please select your contestants </H2>
 
 
 
 <div class="ContestantSelection">
     Fighter selection
 
+    <form class="NumberOfContestants">
+        <label for="HowManyContestants"> Number of contestants: </label>
+        <input type="number" name="HowManyContestants" id="HowManyContestants"  max="200" min="2" value="5">
+    </form>
+
+    <div class="SelectionOfIndividualContestants" id="SelectionOfIndividualContestants">
+    </div>
+
 
 </div>
 
 
-<div class="Simulation">
-    Hunger Games
+<div class="SimulationWrapper">
+    Hunger Games simulation
+
+    <div class="Timeframes">
+
+
+    </div>
 
 </div>
 
