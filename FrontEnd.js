@@ -1,35 +1,35 @@
 
 class Reaping{
     constructor(){
-        this.ChangeNumberOfContestantsToEqualTheSelectedValue()
-        document.getElementById("HowManyContestants").addEventListener("change", this.ChangeNumberOfContestantsToEqualTheSelectedValue.bind(this))
+        this.changeNumberOfContestantsToEqualTheSelectedValue()
+        document.getElementById("howManyContestants").addEventListener("change", this.changeNumberOfContestantsToEqualTheSelectedValue.bind(this))
     }
 
-    PushNewContestantField(){
-        const ContestantDiv = document.getElementById("SelectionOfIndividualContestants")
-        const NewDiv = document.createElement("div");
+    pushNewContestantField(){
+        const contestantDiv = document.getElementById("selectionOfIndividualContestants")
+        const newDiv = document.createElement("div");
 
-        let currentNumberOfNodes = document.getElementById("SelectionOfIndividualContestants").childNodes.length
+        let currentNumberOfNodes = document.getElementById("selectionOfIndividualContestants").childNodes.length
 
-        NewDiv.id = "Contestant" + currentNumberOfNodes
+        newDiv.id = "contestant" + currentNumberOfNodes
 
-        NewDiv.innerHTML =
-            `<form class="ContestantForm" id="${NewDiv.id}Form ">
-                <label for="Name${NewDiv.id}"> Name: </label>
-                <input type="text" name="Name" id="Name${NewDiv.id}" >
+        newDiv.innerHTML =
+            `<form class="contestantForm" id="${newDiv.id}Form ">
+                <label for="name${newDiv.id}"> Name: </label>
+                <input type="text" name="name" id="name${newDiv.id}" >
                 
-                <label for="Pronouns${NewDiv.id}"> Pronouns: </label>
-                <input type="text" name="Pronouns" id="Pronouns${NewDiv.id}" >
+                <label for="pronouns${newDiv.id}"> Pronouns: </label>
+                <input type="text" name="pronouns" id="pronouns${newDiv.id}" >
                 
-                <label for="ImageURL${NewDiv.id}"> URL with image: </label>
-                <input type="url" name="ImageURL" id="ImageURL${NewDiv.id}" >
+                <label for="imageURL${newDiv.id}"> URL with image: </label>
+                <input type="url" name="imageURL" id="imageURL${newDiv.id}" >
                 
-                <label for="Team${NewDiv.id}"> Team: </label>
-                <input type="text" name="Team" id="Team${NewDiv.id}" >
+                <label for="team${newDiv.id}"> Team: </label>
+                <input type="text" name="team" id="team${newDiv.id}" >
                 
-                <label for="Attitude${NewDiv.id}"> Pronouns: </label>
-                <select name="Attitude" id="Attitude${NewDiv.id}" >
-                    <option value="Random">Random</option>
+                <label for="attitude${newDiv.id}"> Attitude: </label>
+                <select name="attitude" id="attitude${newDiv.id}" >
+                    <option value="random">Random</option>
                     <option value="Placeholder">Placeholder</option>
                     <option value="Placeholder">Placeholder</option>
                     <option value="Placeholder">Placeholder</option>
@@ -37,25 +37,25 @@ class Reaping{
                 </select>
             </form>`
 
-        ContestantDiv.appendChild(NewDiv)
+        contestantDiv.appendChild(newDiv)
     }
-    PopLastContestantField(){
-        const ContestantDiv = document.getElementById("SelectionOfIndividualContestants")
-        ContestantDiv.removeChild(ContestantDiv.lastChild)
+    popLastContestantField(){
+        const contestantDiv = document.getElementById("selectionOfIndividualContestants")
+        contestantDiv.removeChild(contestantDiv.lastChild)
     }
 
-    ChangeNumberOfContestantsToEqualTheSelectedValue(){
-        let HowManyContestants = document.getElementById("HowManyContestants").value
-        let currentNumberOfNodes = document.getElementById("SelectionOfIndividualContestants").childNodes.length
-        let change = HowManyContestants - currentNumberOfNodes + 1
+    changeNumberOfContestantsToEqualTheSelectedValue(){
+        let howManyContestants = document.getElementById("howManyContestants").value
+        let currentNumberOfNodes = document.getElementById("selectionOfIndividualContestants").childNodes.length
+        let change = howManyContestants - currentNumberOfNodes + 1
         if (change > 0){
             for(let i = 0; i < change; i++){
-                this.PushNewContestantField()
+                this.pushNewContestantField()
             }
         }
         else if (change < 0){
             for(let i = 0; i > change; i--){
-                this.PopLastContestantField()
+                this.popLastContestantField()
             }
         }
     }
