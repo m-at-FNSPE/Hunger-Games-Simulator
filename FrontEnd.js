@@ -8,6 +8,8 @@ class Reaping{
         this.changeNumberOfContestantsToEqualTheSelectedValue()
         document.getElementById("howManyContestants").addEventListener("change", this.changeNumberOfContestantsToEqualTheSelectedValue.bind(this))
         document.getElementById("generateRandom").addEventListener("click", this.fillWithRandomContestants.bind(this))
+        document.getElementById("assignTeams").addEventListener("click", this.assignRandomTeams.bind(this))
+        document.getElementById("clear").addEventListener("click", this.clearForm.bind(this))
     }
 
     pushNewContestantField(){
@@ -80,7 +82,36 @@ class Reaping{
             currentForm.children.namedItem("name").value = Reaping.generateRandomName()
 
             currentForm.children.namedItem("pronouns").value = randomArrayElement(Reaping.listOfRandomPronouns)
+
+            currentForm.children.namedItem("attitude").value = "random"
         }
+    }
+
+    assignRandomTeams(){
+        let NumberOfTeams = document.getElementById("numberOfTeams").value
+        let listOfForms = document.getElementById("selectionOfIndividualContestants").children
+
+        let NumberOfMembersPerTeam = Math.floor(listOfForms.length / NumberOfTeams)
+        for(let i = 0; i < NumberOfTeams; i++) {
+            for (let j = 0; j < NumberOfMembersPerTeam; j++) {
+            let currentForm = listOfForms[i*NumberOfMembersPerTeam + j].firstChild
+            currentForm.children.namedItem("team").value = "Team " + (i + 1)
+            }
+        }
+    }
+
+    clearForm(){
+        let listOfForms = document.getElementById("selectionOfIndividualContestants").children
+
+        for(let i = 0; i < listOfForms.length; i++){
+            let currentForm = listOfForms[i].firstChild
+            currentForm.children.namedItem("name").value = ""
+            currentForm.children.namedItem("imageURL").value = ""
+            currentForm.children.namedItem("pronouns").value = ""
+            currentForm.children.namedItem("team").value = ""
+            currentForm.children.namedItem("attitude").value = "random"
+        }
+
     }
 
 

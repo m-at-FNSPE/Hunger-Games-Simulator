@@ -21,15 +21,22 @@
 
     <form class="numberOfContestants">
         <label for="howManyContestants"> Number of contestants: </label>
-        <input type="number" name="howManyContestants" id="howManyContestants"  max="200" min="2" value="2">
+        <input type="number" name="howManyContestants" id="howManyContestants"  max="200" min="2" value="4">
     </form>
 
     <div class="selectionOfIndividualContestants" id="selectionOfIndividualContestants">
     </div>
 
-    <div class="submitForm">
+    <div class="selectionButtons">
         <input type="button" name="generateRandom" id="generateRandom"  value="Generate random">
+        <input type="button" name="clear" id="clear"  value="Clear">
         <input type="button" name="submitContestants" id="submitContestants"  value="Submit Contestants">
+    </div>
+
+    <div class="put">
+        <label for="numberOfTeams"> Number of teams: </label>
+        <input type="number" name="numberOfTeams" id="numberOfTeams"  max="200" min="2" value="2">
+        <input type="button" name="assignTeams" id="assignTeams"  value="Randomly assign">
     </div>
 </div>
 
