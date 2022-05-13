@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script defer src="helperFunctions.js"></script>
+    <script defer src="ContestantForm.js"></script>
     <script defer src="Arena.js"></script>
-    <script defer src="FrontEnd.js"></script>
+    <script defer src="tribute.js"></script>
+    <script defer src="Main.js"></script>
     <title>Hunger Games Simulator</title>
 </head>
 <body>
@@ -17,11 +20,12 @@
 
 
 <div class="contestantSelection">
-    Fighter selection
+    Contestant selection
 
     <form class="numberOfContestants">
         <label for="howManyContestants"> Number of contestants: </label>
         <input type="number" name="howManyContestants" id="howManyContestants"  max="200" min="2" value="4">
+        <input type="submit" disabled style="display: none" aria-hidden="true"> <! this prevents submitting the form with enter >
     </form>
 
     <div class="selectionOfIndividualContestants" id="selectionOfIndividualContestants">
@@ -34,9 +38,9 @@
     </div>
 
     <div class="put">
-        <label for="numberOfTeams"> Number of teams: </label>
+        <label for="numberOfTeams"> Number of teams to automatically assign: </label>
         <input type="number" name="numberOfTeams" id="numberOfTeams"  max="200" min="2" value="2">
-        <input type="button" name="assignTeams" id="assignTeams"  value="Randomly assign">
+        <input type="button" name="assignTeams" id="assignTeams"  value="Assign">
     </div>
 </div>
 

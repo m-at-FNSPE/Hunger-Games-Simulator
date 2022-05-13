@@ -10,6 +10,7 @@ class Reaping{
         document.getElementById("generateRandom").addEventListener("click", this.fillWithRandomContestants.bind(this))
         document.getElementById("assignTeams").addEventListener("click", this.assignRandomTeams.bind(this))
         document.getElementById("clear").addEventListener("click", this.clearForm.bind(this))
+        document.getElementById("submitContestants").addEventListener("click", this.submitForm.bind(this))
     }
 
     pushNewContestantField(){
@@ -98,6 +99,11 @@ class Reaping{
             currentForm.children.namedItem("team").value = "Team " + (i + 1)
             }
         }
+        for(let i = NumberOfMembersPerTeam*NumberOfTeams; i < listOfForms.length; i++) {
+            let currentForm = listOfForms[i].firstChild
+            currentForm.children.namedItem("team").value = ""
+        }
+
     }
 
     clearForm(){
@@ -115,6 +121,28 @@ class Reaping{
     }
 
 
+    submitForm(){
+        tributes = this.createListOfContestantsFromForm()
+    }
+
+
+    createListOfContestantsFromForm(){
+        let listOfForms = document.getElementById("selectionOfIndividualContestants").children
+
+        let result = []
+
+        for(let i = 0; i < listOfForms.length; i++){
+            let currentForm = listOfForms[i].firstChild
+            let name = currentForm.children.namedItem("name").value
+            let imageURL = currentForm.children.namedItem("imageURL").value
+            let pronouns = currentForm.children.namedItem("pronouns").value
+            let attitude = currentForm.children.namedItem("attitude").value
+            let team = currentForm.children.namedItem("team").value
+            result.push(new Tribute(name, imageURL, pronouns,attitude,team))
+        }
+
+        return result
+    }
 
 
 
@@ -139,17 +167,3 @@ function randomArrayElement(array){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-//************************************* CODE EXECUTION ***************************
-
-let reaping = new Reaping()
