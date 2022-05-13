@@ -1,17 +1,8 @@
-class Tribute{
+class Tribute {
 
     _TributeID
-    _Stats
     _Kills
-    _Exhausted
-    _State
-
-    get Stats() {
-        return this._Stats;
-    }
-    set Stats(value) {
-        this._Stats = value;
-    }
+    _Alive
 
     get Kills() {
         return this._Kills;
@@ -21,41 +12,28 @@ class Tribute{
         this._Kills = value;
     }
 
-    get Exhausted() {
-        return this._Exhausted;
-    }
-
-    set Exhausted(value) {
-        this._Exhausted = value;
-    }
-
-    get State() {
-        return this._State;
-    }
-
-    set State(value) {
-        this._State = value;
-    }
     get TributeID() {
         return this._TributeID;
     }
 
-    constructor(fullName, imageLink, pronoun, DefaultState, DefaultTeam) {
-        this._TributeID = new TributeID(fullName, imageLink, pronoun, DefaultState, DefaultTeam)
-        this.Kills = 0
-        this.Exhausted = 0
-        this.State = DefaultState
+    get Alive(){
+        return this._Alive
     }
 
-
-
+    constructor(fullName, imageLink, pronoun, DefaultTeam) {
+        this._TributeID = new TributeID(fullName, imageLink, pronoun, DefaultTeam)
+        this.Kills = 0
+        this._Alive = true
+    }
 }
+
 
 
 
 
 class TributeID {
     _fullName; _imageLink; _subjectPronoun; _objectPronoun; _DefaultState; _DefaultTeam
+
 
 
     get fullName() {

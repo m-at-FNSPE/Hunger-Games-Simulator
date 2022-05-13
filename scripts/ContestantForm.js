@@ -129,7 +129,7 @@ class Reaping{
     createListOfContestantsFromForm(){
         let listOfForms = document.getElementById("selectionOfIndividualContestants").children
 
-        let result = []
+        let result = new AllTributes()
 
         for(let i = 0; i < listOfForms.length; i++){
             let currentForm = listOfForms[i].firstChild
@@ -152,18 +152,5 @@ class Reaping{
 
 
 
-
-
-
-
-
-
-
-
-
-//************************************************** HELPER FUNCTIONS ***************************
-function randomArrayElement(array){
-    return array[Math.floor(Math.random() * array.length)]
-}
 
 
